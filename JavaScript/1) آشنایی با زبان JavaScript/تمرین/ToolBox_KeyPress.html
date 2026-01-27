@@ -1,0 +1,53 @@
+﻿<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function checkChar(e, type, AllowSpace) {
+            var keycode;
+
+            if (window.event) {
+                keycode = window.event.keyCode;
+            }
+            else {
+                keycode = e.which;
+            }
+
+            if (keycode == 0 || keycode == 8 || keycode == 9 || keycode == 13 || (AllowSpace != undefined && keycode == 32))
+                return true;
+
+            switch (type) {
+                case 1: if (keycode < 48 || keycode > 57) return false;  // Only Number 
+                    break;
+                case 2: if (keycode < 1570 || keycode > 1711) return false;  // Only Persian
+                    break;
+                case 3: if (keycode < 65 || (keycode > 90 && keycode < 97) || keycode > 122) return false; // Only English
+                    break;
+            }
+            return true;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div dir="rtl" style="font-family: tahoma">
+        <input type="text" id="TextBox1" runat="server" onkeypress="return checkChar(event,1);" />
+        فقط عدد
+        <br />
+        <input type="text" id="TextBox2" runat="server" onkeypress="return checkChar(event,2);" />
+        فقط كاراكتر فارسي بدون space
+        <br />
+        <input type="text" id="TextBox4" runat="server" onkeypress="return checkChar(event,2,1);" />
+        فقط كاراكتر فارسي با space
+        <br />
+        <input type="text" id="TextBox5" runat="server" onkeypress="return checkChar(event,3);" />
+        فقط كاراكتر انگليسي بدون space
+        <br />
+        <input type="text" id="TextBox3" runat="server" onkeypress="return checkChar(event,3,1);" />
+        فقط كاراكتر انگليسي با space
+        <br />
+    </div>
+</body>
+
+</html>

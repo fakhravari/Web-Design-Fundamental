@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        * {
+            font-family: "Vazir";
+        }
+
+        body {
+            margin: 0;
+            padding: 16px;
+            background: #f6f7fb;
+            direction: rtl;
+        }
+
+        card {
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        card div {
+            width: 50%;
+        }
+
+        card div select {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+
+    <card>
+        <div>
+            <label for="IdOstan">استان : </label>
+            <select id="IdOstan" onchange="OstanChange(this.value);"></select>
+        </div>
+        <div>
+            <label for="IdCity">شهر : </label>
+            <select id="IdCity"></select>
+        </div>
+    </card>
+
+    <hr>
+    <p id="MyResult"></p>
+
+    <script>
+        var Province = [{ "Id": 187, "Title": "آذربایجان شرقی   " }, { "Id": 188, "Title": "آذربایجان غربی   " }, { "Id": 189, "Title": "اردبیل   " }, { "Id": 190, "Title": "اصفهان   " }, { "Id": 191, "Title": "البرز   " }, { "Id": 192, "Title": "ایلام   " }, { "Id": 193, "Title": "بوشهر   " }, { "Id": 194, "Title": "تهران   " }, { "Id": 195, "Title": "چهارمحال و بختیاری   " }, { "Id": 196, "Title": "خراسان جنوبی   " }, { "Id": 197, "Title": "خراسان رضوی   " }, { "Id": 198, "Title": "خراسان شمالی   " }, { "Id": 199, "Title": "خوزستان   " }, { "Id": 200, "Title": "زنجان   " }, { "Id": 201, "Title": "سمنان   " }, { "Id": 202, "Title": "سیستان و بلوچستان   " }, { "Id": 203, "Title": "فارس   " }, { "Id": 204, "Title": "قزوین   " }, { "Id": 205, "Title": "قم   " }, { "Id": 206, "Title": "کردستان   " }, { "Id": 207, "Title": "کرمان   " }, { "Id": 208, "Title": "کرمانشاه   " }, { "Id": 209, "Title": "کهگیلویه و بویراحمد   " }, { "Id": 210, "Title": "گلستان   " }, { "Id": 211, "Title": "گیلان   " }, { "Id": 212, "Title": "لرستان   " }, { "Id": 213, "Title": "مازندران   " }, { "Id": 214, "Title": "مرکزی   " }, { "Id": 215, "Title": "هرمزگان   " }, { "Id": 216, "Title": "همدان   " }, { "Id": 217, "Title": "یزد   " }];
+        var City = [
+            { "IdProvince": 193, "Id": 797, "Title": "بوشهر " }, { "IdProvince": 193, "Id": 832, "Title": "دیلم " }, { "IdProvince": 193, "Id": 833, "Title": "عسلویه " }, { "IdProvince": 193, "Id": 847, "Title": "دشتی " },
+            { "IdProvince": 194, "Id": 771, "Title": "فیروزکوه " }, { "IdProvince": 194, "Id": 805, "Title": "اندیشه " }, { "IdProvince": 194, "Id": 848, "Title": "پرند " }, { "IdProvince": 194, "Id": 886, "Title": "قدس " }, { "IdProvince": 194, "Id": 935, "Title": "پاکدشت " },
+            { "IdProvince": 190, "Id": 751, "Title": "فریدون‌شهر " }, { "IdProvince": 190, "Id": 758, "Title": "نجف‌آباد " }, { "IdProvince": 190, "Id": 770, "Title": "چادگان " }, { "IdProvince": 190, "Id": 779, "Title": "دهاقان " }, { "IdProvince": 190, "Id": 796, "Title": "نطنز " }
+        ];
+
+
+        function OstanChange(id) {
+            var NewCity = City.filter(v => v.IdProvince == id);
+            if (NewCity.length === 0) {
+                if (id == 0) {
+                    document.getElementById("IdCity").innerHTML = '';
+                }
+                else {
+                    document.getElementById("IdCity").innerHTML = `<option value='0'> موردی نیست </option>`;
+                }
+            }
+            else {
+                document.getElementById("IdCity").innerHTML = `<option value='0'> انتخاب کنید </option>`;
+                document.getElementById("IdCity").innerHTML += NewCity.map(function (item) {
+                    return `<option value="${item.Id}">${item.Title}</option>`;
+                });
+            }
+
+            GetTedad();
+        }
+
+
+        function GetTedad() {
+
+            let ostan = document.getElementById('IdOstan').length;
+            let shahr = document.getElementById('IdCity').length;
+
+            if (shahr === 1 || shahr === 0) {
+                shahr = 0;
+            }
+            else {
+                shahr = shahr - 1;
+            }
+
+            var el = document.getElementById("MyResult");
+            el.innerHTML = "تعداد استان ها : (" + ostan + ")";
+            el.innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            el.innerHTML += "تعداد شهر ها : (" + shahr + ")";
+            el.style.textAlign = "center";
+            el.style.color = "blue";
+        }
+
+
+        window.onload = function () {
+            var pro = document.getElementById('IdOstan');
+            var op_1 = document.createElement("option");
+            op_1.textContent = 'انتخاب کنید';
+            op_1.value = '0';
+            pro.appendChild(op_1);
+
+            for (var i = 0; i < Province.length; i++) {
+                var op_element = document.createElement("option");
+                op_element.value = Province[i].Id;
+                op_element.textContent = Province[i].Title;
+                pro.appendChild(op_element);
+            }
+            GetTedad();
+        }
+    </script>
+
+</body>
+
+</html>
