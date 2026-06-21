@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Grid Layout</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Vazir FD-WOL", sans-serif;
+            background: #f5f6fa;
+            direction: rtl;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            grid-template-areas: "header header" "sidebar products";
+            gap: 16px;
+            padding: 16px;
+        }
+
+        .header {
+            grid-area: header;
+            background: #ff6b35;
+            color: #fff;
+            padding: 16px 20px;
+            border-radius: 14px;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background: #fff;
+            padding: 16px;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+        }
+
+        .products {
+            grid-area: products;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .product {
+            background: #fff;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+        }
+
+        .product img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            background: transparent;
+        }
+
+        .product h4 {
+            margin: 10px 0 6px;
+            font-size: 14px;
+            color: #222;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #0a7cff;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "products";
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <header class="header">فروشگاه آنلاین</header>
+
+        <aside class="sidebar">
+            <h3 style="margin:0 0 10px;">فیلترها</h3>
+            <div>📂 دسته‌بندی</div>
+            <div>💰 محدوده قیمت</div>
+            <div>🏷 برند</div>
+            <div>⭐ امتیاز کاربران</div>
+        </aside>
+
+        <main class="products">
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>گوشی موبایل سامسونگ</h4>
+                <div class="price">۱۲٬۵۰۰٬۰۰۰ تومان</div>
+            </div>
+
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>هدفون بی‌سیم</h4>
+                <div class="price">۲٬۳۰۰٬۰۰۰ تومان</div>
+            </div>
+
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>ساعت هوشمند</h4>
+                <div class="price">۳٬۹۰۰٬۰۰۰ تومان</div>
+            </div>
+
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>لپ‌تاپ ۱۵ اینچی</h4>
+                <div class="price">۴۴٬۵۰۰٬۰۰۰ تومان</div>
+            </div>
+
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>کیبورد مکانیکی</h4>
+                <div class="price">۱٬۸۰۰٬۰۰۰ تومان</div>
+            </div>
+
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>ماوس گیمینگ</h4>
+                <div class="price">۹۵۰٬۰۰۰ تومان</div>
+            </div>
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>ماوس گیمینگ</h4>
+                <div class="price">۹۵۰٬۰۰۰ تومان</div>
+            </div>
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>ماوس گیمینگ</h4>
+                <div class="price">۹۵۰٬۰۰۰ تومان</div>
+            </div>
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>ماوس گیمینگ</h4>
+                <div class="price">۹۵۰٬۰۰۰ تومان</div>
+            </div>
+            <div class="product">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" alt="">
+                <h4>ماوس گیمینگ</h4>
+                <div class="price">۹۵۰٬۰۰۰ تومان</div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
