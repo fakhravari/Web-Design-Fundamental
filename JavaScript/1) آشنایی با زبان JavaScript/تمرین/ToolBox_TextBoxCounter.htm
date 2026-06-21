@@ -1,0 +1,34 @@
+<html>
+
+<head></head>
+
+<body dir="rtl">
+    <script language="javascript" type="text/javascript">
+        function textareaCounter(maxChars) {
+            var myTextArea = document.getElementById('MyMessage');
+            var myCounter = document.getElementById('MyCounter');
+
+            if (myTextArea.value.length > maxChars) {
+                myTextArea.value = myTextArea.value.substring(0, maxChars);
+                myCounter.value = 0;
+            }
+            else {
+                myCounter.value = maxChars - myTextArea.value.length;
+            }
+        }
+    </script>
+
+
+    <textarea cols="40" rows="9" id="MyMessage" style="width: 100%; padding: 25px;" onkeyup="textareaCounter(100)">
+    </textarea>
+
+
+    <br>
+
+    <p dir="ltr"> <em>Characters remaining:</em>
+        <input type="text" id="MyCounter" style="border: Gray 1px solid; width: auto; text-align: center;" disabled
+            readonly value="100">
+    </p>
+</body>
+
+</html>

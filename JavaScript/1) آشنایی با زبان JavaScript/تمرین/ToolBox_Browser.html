@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript">
+
+        function readData() {
+            var txt = '';
+
+            txt = "<p>" + navigator.appCodeName + "</p>";
+            txt += "<p>" + navigator.appName + "</p>";
+            txt += "<p>" + navigator.appVersion + "</p>";
+            txt += "<p>" + navigator.cookieEnabled + "</p>";
+            txt += "<p>" + navigator.platform + "</p>";
+            txt += "<p>" + navigator.userAgent + "</p>";
+
+            document.getElementById("example").innerHTML = txt;
+        }
+
+
+        window.onload = function () {
+            readData();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="example"></div>
+</body>
+
+</html>

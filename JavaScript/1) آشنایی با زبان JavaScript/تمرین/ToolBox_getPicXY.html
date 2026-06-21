@@ -1,0 +1,21 @@
+<script>
+    function getPicXY(e) {
+        tempX = event.clientX + document.body.scrollLeft
+        tempY = event.clientY + document.body.scrollTop
+        mouse_X = tempX
+        mouse_Y = tempY
+        picTop = document.getElementById('myPic').offsetTop;
+        picLeft = document.getElementById('myPic').offsetLeft;
+        picClickX = mouse_X - picLeft
+        picClickY = mouse_Y - picTop
+        alert('x:' + picClickX + '  , y:' + picClickY)
+    }
+
+</script>
+</head>
+
+<body>
+
+    <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" id="myPic"
+        onclick="getPicXY(this.event)">
+</body>

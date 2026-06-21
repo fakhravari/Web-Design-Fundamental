@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            font-family: 'Vazir FD-WOL';
+            direction: rtl;
+        }
+
+        body {
+            background: linear-gradient(rgb(192, 192, 192), rgb(179, 7, 102));
+        }
+
+        fieldset {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 25px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 20px;
+        }
+
+        fieldset input {
+            width: 100%;
+        }
+
+        button {
+            width: 50%;
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <fieldset>
+        <legend>ثبتنام</legend>
+
+        <form name="RegisterUserForm" id="RegisterUserForm" method="get" action="/adress">
+            <p>نام : <input type="text" id="IdName" required /></p>
+            <p>تلفن : <input type="tel" id="IdTel" required /></p>
+            <p>ایمیل : <input type="email" id="IdEmail" required /></p>
+            <p>رمز : <input type="password" id="IdPassword" required /></p>
+            <p>تکرار رمز : <input type="password" id="IdPassword2" required /></p>
+
+            <p style="text-align: center;"> <button type="submit">ثبت نام در وب سایت </button></p>
+        </form>
+    </fieldset>
+
+    <script type="text/javascript">
+        function checkpassword() {
+            var p1 = document.forms["RegisterUserForm"]["IdPassword"].value;
+            var p2 = document.forms["RegisterUserForm"]["IdPassword2"].value;
+
+            if (p1 != p2) {
+                alert("پسورد یکسان نیست");
+                return false;
+            }
+
+            return true;
+        }
+
+        const form = document.getElementById("RegisterUserForm");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            if (checkpassword() === true) {
+                alert("✅ ثبت‌نام با موفقیت انجام شد!")
+            }
+        });
+    </script>
+
+</body>
+</html>

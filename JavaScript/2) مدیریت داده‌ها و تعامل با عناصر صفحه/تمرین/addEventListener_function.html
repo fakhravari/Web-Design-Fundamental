@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body dir="rtl">
+
+    <h2 onclick="ShowMessage();">روی من کلیک کنی بازم رویداد اجرا میشه</h2>
+
+    <button onclick="ShowMessage();">کلیک کنید</button>
+
+    <hr>
+    <input type="button" id="MyBTN_1" value="MyBTN_1">
+    <input type="button" id="MyBTN_2" value="MyBTN_2">
+
+
+    <script>
+
+        function ShowMessage() {
+            alert("کلیک شد \n " + new Date());
+        }
+        function msg2() {
+            alert("کلیک MyBTN_2");
+        }
+        function msg1() {
+            alert("کلیک MyBTN_1");
+        }
+
+
+        var MyBut_1 = document.getElementById("MyBTN_1");
+        MyBut_1.addEventListener("click", msg1);
+
+        var MyBut_2 = document.getElementById("MyBTN_2");
+        MyBut_2.onclick = function () {
+            msg2();
+        };
+
+    </script>
+
+</body>
+
+</html>

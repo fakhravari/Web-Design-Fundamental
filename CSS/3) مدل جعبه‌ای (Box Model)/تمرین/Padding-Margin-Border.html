@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Padding, Margin, Border Demo</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f1f5f9;
+            padding: 30px;
+            direction: rtl;
+        }
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-top: 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .row {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== BOX BASE ===== */
+        .box {
+            width: 300px;
+            background: #fff;
+            text-align: center;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        /* ===== PADDING ===== */
+        .padding-1 {
+            padding: 10px;
+            border: 3px solid #0ea5e9;
+            background: #e0f2fe;
+        }
+
+        .padding-2 {
+            padding: 10px 30px;
+            border: 3px solid #0ea5e9;
+            background: #bae6fd;
+        }
+
+        .padding-3 {
+            padding: 5px 10px 15px 20px;
+            border: 3px solid #0ea5e9;
+            background: #7dd3fc;
+        }
+
+        /* ===== MARGIN ===== */
+        .margin-wrapper {
+            background: #ddd6fe;
+            padding: 10px;
+        }
+
+        .margin-box {
+            margin: 25px;
+            padding: 15px;
+            background: #8b5cf6;
+            color: white;
+            border-radius: 8px;
+        }
+
+        /* ===== BORDER TYPES ===== */
+        .border-solid {
+            border: 4px solid #22c55e;
+            padding: 15px;
+        }
+
+        .border-dashed {
+            border: 4px dashed #f97316;
+            padding: 15px;
+        }
+
+        .border-dotted {
+            border: 4px dotted #ef4444;
+            padding: 15px;
+        }
+
+        .border-double {
+            border: 5px double #6366f1;
+            padding: 15px;
+        }
+
+        .border-radius {
+            border: 4px solid #14b8a6;
+            border-radius: 25px;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PADDING -->
+    <div class="section">
+        <h2>Padding (فاصله داخلی)</h2>
+        <p>فاصله بین محتوا و حاشیه (Border)</p>
+
+        <div class="row">
+            <div class="box padding-1">padding: 10px</div>
+            <div class="box padding-2">padding: 10px 30px</div>
+            <div class="box padding-3">padding: 5 10 15 20</div>
+        </div>
+    </div>
+
+    <!-- MARGIN -->
+    <div class="section">
+        <h2>Margin (فاصله خارجی)</h2>
+        <p>فاصله بیرونی عنصر نسبت به عناصر اطراف</p>
+
+        <div class="row">
+            <div class="margin-wrapper">
+                container
+                <div class="margin-box">
+                    margin: 25px
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BORDER -->
+    <div class="section">
+        <h2>Border (انواع حاشیه)</h2>
+        <p>مرز عنصر که بخشی از Box Model است</p>
+
+        <div class="row">
+            <div class="box border-solid">solid</div>
+            <div class="box border-dashed">dashed</div>
+            <div class="box border-dotted">dotted</div>
+            <div class="box border-double">double</div>
+            <div class="box border-radius">radius</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

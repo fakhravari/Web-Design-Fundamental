@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Flex Layout</title>
+
+    <style>
+        * {
+            font-family: "Vazir FD-WOL";
+        }
+
+        body {
+            margin: 0;
+            padding: 16px;
+            background: #f6f7fb;
+            direction: rtl;
+        }
+
+        fieldset {
+            border: 1px solid #e1e3ea;
+            background: #fff;
+            border-radius: 14px;
+            padding: 16px;
+        }
+
+        legend {
+            padding: 6px 14px;
+            background: #ff6b35;
+            color: #fff;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            flex: 0 1 220px;
+            max-width: 260px;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: 0.25s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .content {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .content h3 {
+            margin: 0;
+            font-size: 15px;
+            color: #222;
+            line-height: 1.4;
+            height: 42px;
+            overflow: hidden;
+        }
+
+        .content p {
+            margin: 0;
+            font-size: 13px;
+            color: #666;
+            height: 34px;
+            overflow: hidden;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0a7cff;
+            margin-top: auto;
+        }
+
+        .old-price {
+            font-size: 13px;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 6px;
+        }
+
+        .actions {
+            padding: 12px 14px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .btn {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #ff6b35;
+            color: #fff;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #912809;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <legend>محصولات فروشگاهی</legend>
+
+        <div class="products">
+            <div class="product-card">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" />
+                <div class="content">
+                    <h3>گوشی موبایل سامسونگ Galaxy A54</h3>
+                    <p>حافظه ۱۲۸ گیگابایت، رم ۸ گیگابایت</p>
+                    <div>
+                        <span class="old-price">۱۴٬۲۰۰٬۰۰۰</span>
+                        <span class="price">۱۲٬۵۰۰٬۰۰۰ تومان</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button onclick="addProduct(this)" data-price="12500000" data-idProduct="1001"
+                        data-title="گوشی موبایل سامسونگ Galaxy A54" class="btn">
+                        افزودن به سبد خرید
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" />
+                <div class="content">
+                    <h3>هدفون بی‌سیم</h3>
+                    <p>دارای نویز کنسلینگ و باتری قوی</p>
+                    <span class="price">۲٬۳۰۰٬۰۰۰ تومان</span>
+                </div>
+                <div class="actions">
+                    <button onclick="addProduct(this)" data-price="2300000" data-idProduct="1002"
+                        data-title="هدفون بی‌سیم" class="btn">
+                        افزودن به سبد خرید
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://dkstatics-public.digikala.com/digikala-products/112066961.jpg" />
+                <div class="content">
+                    <h3>ساعت هوشمند</h3>
+                    <p>پایش سلامتی، ضدآب، سازگار با اندروید و iOS</p>
+                    <span class="price">۳٬۹۰۰٬۰۰۰ تومان</span>
+                </div>
+                <div class="actions">
+                    <button onclick="addProduct(this)" data-price="3900000" data-idProduct="1003"
+                        data-title="ساعت هوشمند" class="btn">
+                        افزودن به سبد خرید
+                    </button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset style="margin-top: 100px;">
+        <legend id="idSabad_Title"></legend>
+        <div id="idSabad_Body"></div>
+    </fieldset>
+
+
+    <br>
+
+    <input type="button" value="رفرش صفحه" id="idRefreshPage" />
+
+
+    <script>
+
+        var listProduct = Array();
+
+        function addProduct(item) {
+            // console.log(item);
+            let title = (item.getAttribute("data-title"));
+            let idProduct = (item.getAttribute("data-idProduct"));
+            let price = (item.getAttribute("data-price"));
+
+            if (listProduct.filter(x => x.idProduct == idProduct).length === 0) {
+                listProduct.push({ title: title, idProduct: idProduct, price: price });
+                RefreshList();
+            }
+        }
+        function RefreshList() {
+            document.getElementById('idSabad_Title').textContent = ('اقلام در سبد : ' + listProduct.length);
+
+            var html = `
+<table border="1" width="100%" cellspacing="1">
+	<tr>
+		<td align="center"><span lang="fa">کد محصول</span></td>
+		<td align="center"><span lang="fa">قیمت محصول</span></td>
+		<td align="center"><span lang="fa">نام محصول</span></td>
+	</tr>	
+`;
+            for (let index = 0; index < listProduct.length; index++) {
+                const el = listProduct[index];
+
+                html += `
+    <tr>
+		<td align="center">`+ el.idProduct + `</td>
+		<td align="center">`+ el.price + `</td>
+		<td align="center">`+ el.title + `</td>
+	</tr> `;
+            }
+
+            html += `</table>`;
+
+            document.getElementById('idSabad_Body').innerHTML = html;
+        }
+
+        window.onload = function () {
+            RefreshList();
+        }
+
+        const resetBtn = document.getElementById("idRefreshPage");
+        resetBtn.addEventListener("click", function () {
+            window.location.href = window.location.href;
+        });
+        // resetBtn.addEventListener("click", () => {
+        //     window.location.href = window.location.href;
+        // });
+
+    </script>
+</body>
+
+</html>

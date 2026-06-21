@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            font-family: 'Vazir FD-WOL';
+            direction: rtl;
+        }
+
+        body {
+            background: linear-gradient(rgb(192, 192, 192), rgb(179, 7, 102));
+        }
+
+        fieldset {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 25px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 20px;
+        }
+
+        fieldset input {
+            width: 100%;
+        }
+
+        button {
+            width: 50%;
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <fieldset>
+        <legend>ثبتنام</legend>
+
+        <form name="RegisterUserForm" id="RegisterUserForm">
+            <p>نام : <input type="text" id="IdName" /></p>
+            <p>تلفن : <input type="tel" id="IdTel" /></p>
+            <p>ایمیل : <input type="email" id="IdEmail" /></p>
+            <p>رمز : <input type="password" id="IdPassword" /></p>
+            <p>تکرار رمز : <input type="password" id="IdPassword2" /></p>
+        </form>
+
+        <p style="text-align: center;"> <button onclick="Sabt()">ثبت نام در وب سایت </button></p>
+
+    </fieldset>
+
+    <script type="text/javascript">
+        function validateForm() {
+            var name = document.forms["RegisterUserForm"]["IdName"].value;
+            var tell = document.forms["RegisterUserForm"]["IdTel"].value;
+            var email = document.forms["RegisterUserForm"]["IdEmail"].value;
+            var password = document.forms["RegisterUserForm"]["IdPassword"].value;
+
+            if (
+                name == null || name == "" ||
+                tell == null || tell == "" ||
+                email == null || email == "" ||
+                password == null || password == ""
+            ) {
+                alert("❌ لطفاً خطاهای فرم را برطرف کنید.");
+                return false;
+            }
+
+            return true;
+        }
+        function checkpassword() {
+            var p1 = document.forms["RegisterUserForm"]["IdPassword"].value;
+            var p2 = document.forms["RegisterUserForm"]["IdPassword2"].value;
+
+            if (p1 != p2) {
+                alert("پسورد یکسان نیست");
+                return false;
+            }
+
+            return true;
+        }
+        function Sabt() {
+            var step1 = validateForm();
+            var step2 = checkpassword();
+
+            if (step1 === true && step2 === true) {
+                alert('ok sabt');
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

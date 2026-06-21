@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        document.onmousemove = function mouse(e) {
+            if (navigator.appName == "Microsoft Internet Explorer")
+                document.getElementById("test").innerHTML = "positio  n : x=" + event.clientX + ", y=" + event.clientY;
+            else
+                document.getElementById("test").innerHTML = "positio  n : x=" + e.pageX + ", y=" + e.pageY;
+        }
+    </script>
+    </head>
+
+    <body style="margin:0; padding:0">
+        <div id="test" style="border: 1px solid #000; height: 50px;text-align: left; font-family:tahoma;"></div>
+    </body>
+
+</body>
+
+</html>
